@@ -28,6 +28,12 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public Optional<UserEntity> findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    @Override
     @Transactional
     public void save(UserEntity user) {
         userRepository.save(user);

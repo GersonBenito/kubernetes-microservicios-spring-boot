@@ -7,11 +7,11 @@
 		<artifactId>curso-kubernetes</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
-	<groupId>org.gbenito.springcloud.msvc.usuarios</groupId>
-	<artifactId>msvc-usuarios</artifactId>
+	<groupId>org.gbenito.springcloud.msvc.cursos</groupId>
+	<artifactId>msvc-cursos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>msvc-usuarios</name>
-	<description>Microservicio para la administracion de usuarios</description>
+	<name>msvc-cursos</name>
+	<description>Microservicio de cursos</description>
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2023.0.0</spring-cloud.version>
@@ -41,8 +41,8 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>com.mysql</groupId>
-			<artifactId>mysql-connector-j</artifactId>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>

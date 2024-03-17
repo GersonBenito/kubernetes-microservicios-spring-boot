@@ -1,8 +1,8 @@
-package org.gbenito.springcloud.msvc.usuarios.controller;
+package org.gbenito.springcloud.msvc.cursos.controller;
 
 import jakarta.validation.Valid;
-import org.gbenito.springcloud.msvc.usuarios.entity.UserEntity;
-import org.gbenito.springcloud.msvc.usuarios.service.UserService;
+import org.gbenito.springcloud.msvc.cursos.entity.Course;
+import org.gbenito.springcloud.msvc.cursos.service.ICourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,16 +14,16 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/user")
-public class UserController {
+@RequestMapping("/api/v1/course")
+public class CourseController {
     @Autowired
-    private UserService userService;
+    private ICourseService courseService;
 
     @GetMapping
     public ResponseEntity<Map<String, Object>> findAll(){
         Map<String, Object> response = new HashMap<>();
-        List<UserEntity> userList = userService.findAll();
-        response.put("Data", userList);
+        List<Course> courseList = courseService.findAll();
+        response.put("Data", courseList);
         response.put("message", "Get entries success");
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
@@ -31,84 +31,73 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<Map<String, Object>> findById(@PathVariable Long id){
         Map<String, Object> response = new HashMap<>();
-        Optional<UserEntity> userEntity = userService.findById(id);
+        Optional<Course> courseOptional = courseService.findById(id);
         if(id == null){
             response.put("status", HttpStatus.BAD_REQUEST.value());
-            response.put("message", "User id was not be null");
+            response.put("message", "Course id was not be null");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
-        if(userEntity.isPresent()){
-            response.put("Data", userEntity.get());
+
+        if(courseOptional.isPresent()){
+            response.put("Data", courseOptional.get());
             response.put("message", "Get entry success");
             return ResponseEntity.status(HttpStatus.OK).body(response);
         }
 
         response.put("message", "User with id "+id+" not found");
         response.put("status", HttpStatus.NOT_FOUND.value());
-
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
 
     @PostMapping
-    public ResponseEntity<Map<String, Object>> save(@Valid @RequestBody UserEntity userEntity){
+    public ResponseEntity<Map<String, Object>> save(@RequestBody @Valid Course course){
         Map<String, Object> response = new HashMap<>();
-        Optional<UserEntity> optionalUser = userService.findByEmail(userEntity.getEmail());
-        if(optionalUser.isPresent()){
-            response.put("message", "User with email: ".concat(optionalUser.get().getEmail()).concat(" exist"));
-            response.put("status", HttpStatus.CONFLICT.value());
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
-        }
-        userService.save(userEntity);
-        response.put("message", "User save success");
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+        courseService.save(course);
+        response.put("message", "Course save success");
+        return ResponseEntity.status(HttpStatus.OK.value()).body(response);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Map<String, Object>> deleteById(@PathVariable Long id){
+    public ResponseEntity<Map<String,Object>> deleteById(@PathVariable Long id){
         Map<String, Object> response = new HashMap<>();
+
         if(id == null){
-            response.put("message", "User id was not null");
             response.put("status", HttpStatus.BAD_REQUEST.value());
+            response.put("message", "Course id was not be null");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
 
-        Optional<UserEntity> userEntity = userService.findById(id);
-
-        if(userEntity.isPresent()){
-            userService.deleteById(id);
-            response.put("message", "User delete success");
+        Optional<Course> courseOptional = courseService.findById(id);
+        if(courseOptional.isPresent()){
+            courseService.deleteById(id);
+            response.put("message", "Course with id "+id+" was delete");
             return ResponseEntity.status(HttpStatus.OK).body(response);
         }
 
-        response.put("message", "User with id "+id+" not found");
         response.put("status", HttpStatus.NOT_FOUND.value());
-
+        response.put("message", "Course with "+id+" not found");
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Map<String, Object>> update(@Valid @RequestBody UserEntity user, @PathVariable Long id){
+    public ResponseEntity<Map<String, Object>> updateById(@RequestBody @Valid Course course, @PathVariable Long id){
         Map<String, Object> response = new HashMap<>();
         if(id == null){
-            response.put("message", "User id was not null");
             response.put("status", HttpStatus.BAD_REQUEST.value());
+            response.put("message", "Course id was not be null");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
-
-        Optional<UserEntity> userOptional = userService.findById(id);
-        if(userOptional.isPresent()){
-            UserEntity userUpdate = userOptional.get();
-            userUpdate.setName(user.getName());
-            userUpdate.setEmail(user.getEmail());
-            userUpdate.setPassword(user.getPassword());
-
-            userService.save(userUpdate);
-            response.put("message", "User update success");
+        Optional<Course> courseOptional = courseService.findById(id);
+        if(courseOptional.isPresent()){
+            Course courseUpdate = courseOptional.get();
+            courseUpdate.setName(course.getName());
+            courseService.save(courseUpdate);
+            response.put("message", "Course with id "+id+" was update");
             return ResponseEntity.status(HttpStatus.OK).body(response);
         }
 
-        response.put("message", "User with id "+id+" not found");
         response.put("status", HttpStatus.NOT_FOUND.value());
+        response.put("message", "Course with "+id+" not found");
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
 }

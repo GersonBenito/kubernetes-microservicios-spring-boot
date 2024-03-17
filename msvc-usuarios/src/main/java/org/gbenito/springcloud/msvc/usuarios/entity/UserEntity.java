@@ -1,6 +1,7 @@
 package org.gbenito.springcloud.msvc.usuarios.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "users")
@@ -8,9 +9,17 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank
     private String name;
+
+    @NotBlank
+    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "Un correo valido debe de incluir @ y .")
     @Column(unique = true)
     private String email;
+
+    @NotBlank
+    @Size(min = 3, max = 9)
     private String password;
 
     // constructors
