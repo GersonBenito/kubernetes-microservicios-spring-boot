@@ -10,6 +10,6 @@ public interface UserService {
     public Optional<UserEntity> findById(Long id);
     public Optional<UserEntity> findByEmail(String email);
 
-    public void save(UserEntity user);
+    public UserEntity save(UserEntity user);
     public void deleteById(Long id);
 }

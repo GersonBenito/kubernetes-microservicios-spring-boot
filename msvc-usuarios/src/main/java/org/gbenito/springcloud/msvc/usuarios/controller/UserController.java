@@ -28,8 +28,9 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
+    // TODO: Revisar respueta del metodo
     @GetMapping("/{id}")
-    public ResponseEntity<Map<String, Object>> findById(@PathVariable Long id){
+    public ResponseEntity<?> findById(@PathVariable Long id){
         Map<String, Object> response = new HashMap<>();
         Optional<UserEntity> userEntity = userService.findById(id);
         if(id == null){
@@ -40,7 +41,7 @@ public class UserController {
         if(userEntity.isPresent()){
             response.put("Data", userEntity.get());
             response.put("message", "Get entry success");
-            return ResponseEntity.status(HttpStatus.OK).body(response);
+            return ResponseEntity.status(HttpStatus.OK).body(userEntity.get());
         }
 
         response.put("message", "User with id "+id+" not found");
@@ -49,8 +50,9 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
 
+    // TODO: Revisar respueta del metodo
     @PostMapping
-    public ResponseEntity<Map<String, Object>> save(@Valid @RequestBody UserEntity userEntity){
+    public ResponseEntity<?> save(@Valid @RequestBody UserEntity userEntity){
         Map<String, Object> response = new HashMap<>();
         Optional<UserEntity> optionalUser = userService.findByEmail(userEntity.getEmail());
         if(optionalUser.isPresent()){
@@ -58,9 +60,9 @@ public class UserController {
             response.put("status", HttpStatus.CONFLICT.value());
             return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
         }
-        userService.save(userEntity);
+        // userService.save(userEntity);
         response.put("message", "User save success");
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+        return ResponseEntity.status(HttpStatus.OK).body(userService.save(userEntity));
     }
 
     @DeleteMapping("/{id}")

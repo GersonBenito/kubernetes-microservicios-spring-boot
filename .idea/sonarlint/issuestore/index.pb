@@ -21,8 +21,6 @@ Zmsvc-usuarios/src/main/java/org/gbenito/springcloud/msvc/usuarios/service/UserS
 `msvc-usuarios/src/main/java/org/gbenito/springcloud/msvc/usuarios/controller/UserController.java,1\6\16f0061bc7cde3fdb3ec3097b0961379ad5492bf
 C
 msvc-cursos/pom.xml,c\9\c992d90804b37b1ae4d2f0e63baab9da8288400a
-
-Omsvc-cursos/src/main/java/org/gbenito/springcloud/msvc/cursos/entity/Curso.java,0\c\0c8e01c318de4f54f8172c1cca72b6eaa9652e68
 Ä
 Pmsvc-cursos/src/main/java/org/gbenito/springcloud/msvc/cursos/entity/Course.java,f\2\f24d6d960c38e9186dc14d1ec1e01206bf3548f9
 Ü
@@ -41,3 +39,9 @@ Xmsvc-cursos/src/main/java/org/gbenito/springcloud/msvc/cursos/MsvcCursosApplica
 bmsvc-usuarios/src/main/java/org/gbenito/springcloud/msvc/usuarios/advice/UserExceptionHandler.java,7\9\79689ae0210bab59fac1734f44a88743a27784ca
 ê
 `msvc-cursos/src/main/java/org/gbenito/springcloud/msvc/cursos/advice/CourseExceptionHandler.java,2\d\2d18918576d03ab2fc5e23f9be4ac1e9250812b0
+Ñ
+Tmsvc-cursos/src/main/java/org/gbenito/springcloud/msvc/cursos/entity/CourseUser.java,2\0\20acd89ccaee8c3150fd155301b85f998d79f17c
+Ñ
+Tmsvc-cursos/src/main/java/org/gbenito/springcloud/msvc/cursos/entity/UserEntity.java,3\4\34b79a41c3b664902c08055a0d8c55640c0bfc7b
+à
+Xmsvc-cursos/src/main/java/org/gbenito/springcloud/msvc/cursos/client/UserClientRest.java,8\8\886e9dabd4cfe9474c6fc167173e6b06c90110a7

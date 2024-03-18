@@ -1,11 +1,20 @@
 
 p
-java:S1192."NDefine a constant instead of duplicating this literal "User with id " 3 times.(°ÙËğùÿÿÿÿ8‡â»Òä1
+java:S1192/"NDefine a constant instead of duplicating this literal "User with id " 3 times.(°ÙËğùÿÿÿÿ8‡â»Òä1
 m
-java:S1192."KDefine a constant instead of duplicating this literal " not found" 3 times.(°ÙËğùÿÿÿÿ8‡â»Òä1
+java:S1192/"KDefine a constant instead of duplicating this literal " not found" 3 times.(°ÙËğùÿÿÿÿ8‡â»Òä1
 k
 java:S1192"IDefine a constant instead of duplicating this literal "message" 12 times.(¿Úèšøÿÿÿÿ8‡â»Òä1
 i
-java:S1192$"GDefine a constant instead of duplicating this literal "status" 7 times.(ÿÄ†üÿÿÿÿÿ8‡â»Òä1
+java:S1192%"GDefine a constant instead of duplicating this literal "status" 7 times.(ÿÄ†üÿÿÿÿÿ8‡â»Òä1
 _
 java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8¨â»Òä1
+H
+java:S1452!"&Remove usage of generic wildcard type.(Üõ¶¶ûÿÿÿÿ8„şÍöä1
+T
+java:S1135"2Complete the task associated to this TODO comment.(Œ´°®ıÿÿÿÿ8Ú˜Øöä1
+C
+java:S14527"&Remove usage of generic wildcard type.(ÉÊïÁ8“æ¬÷ä1
+T
+java:S11355"2Complete the task associated to this TODO comment.(Œ´°®ıÿÿÿÿ8ù®Ÿ÷ä1
+X	java:S125?"<This block of commented-out lines of code should be removed.(¿ª˜8Û‰¬÷ä1
